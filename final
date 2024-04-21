@@ -1,0 +1,910 @@
+import random
+
+all_av= [[1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8], [1, 9], [1, 10],
+          [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7], [2, 8], [2, 9], [2, 10],
+          [3, 1], [3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [3, 8], [3, 9], [3, 10],
+          [4, 1], [4, 2], [4, 3], [4, 4], [4, 5], [4, 6], [4, 7], [4, 8], [4, 9], [4, 10],
+          [5, 1], [5, 2], [5, 3], [5, 4], [5, 5], [5, 6], [5, 7], [5, 8], [5, 9], [5, 10],
+          [6, 1], [6, 2], [6, 3], [6, 4], [6, 5], [6, 6], [6, 7], [6, 8], [6, 9], [6, 10],
+          [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [7, 8], [7, 9], [7, 10],
+          [8, 1], [8, 2], [8, 3], [8, 4], [8, 5], [8, 6], [8, 7], [8, 8], [8, 9], [8, 10],
+          [9, 1], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6], [9, 7], [9, 8], [9, 9], [9, 10],
+          [10, 1], [10, 2], [10, 3], [10, 4], [10, 5], [10, 6], [10, 7], [10, 8], [10, 9], [10, 10]]
+
+dic = {'A1': '.', 'A2': '.', 'A3': '.', 'A4': '.', 'A5': '.', 'A6': '.', 'A7': '.', 'A8': '.', 'A9': '.', 'A10': '.',
+       'B1': '.', 'B2': '.', 'B3': '.', 'B4': '.', 'B5': '.', 'B6': '.', 'B7': '.', 'B8': '.', 'B9': '.', 'B10': '.',
+       'C1': '.', 'C2': '.', 'C3': '.', 'C4': '.', 'C5': '.', 'C6': '.', 'C7': '.', 'C8': '.', 'C9': '.', 'C10': '.',
+       'D1': '.', 'D2': '.', 'D3': '.', 'D4': '.', 'D5': '.', 'D6': '.', 'D7': '.', 'D8': '.', 'D9': '.', 'D10': '.',
+       'E1': '.', 'E2': '.', 'E3': '.', 'E4': '.', 'E5': '.', 'E6': '.', 'E7': '.', 'E8': '.', 'E9': '.', 'E10': '.',
+       'F1': '.', 'F2': '.', 'F3': '.', 'F4': '.', 'F5': '.', 'F6': '.', 'F7': '.', 'F8': '.', 'F9': '.', 'F10': '.',
+       'G1': '.', 'G2': '.', 'G3': '.', 'G4': '.', 'G5': '.', 'G6': '.', 'G7': '.', 'G8': '.', 'G9': '.', 'G10': '.',
+       'H1': '.', 'H2': '.', 'H3': '.', 'H4': '.', 'H5': '.', 'H6': '.', 'H7': '.', 'H8': '.', 'H9': '.', 'H10': '.',
+       'I1': '.', 'I2': '.', 'I3': '.', 'I4': '.', 'I5': '.', 'I6': '.', 'I7': '.', 'I8': '.', 'I9': '.', 'I10': '.',
+       'J1': '.', 'J2': '.', 'J3': '.', 'J4': '.', 'J5': '.', 'J6': '.', 'J7': '.', 'J8': '.', 'J9': '.', 'J10': '.',}
+
+dic2 = {'A1': [1, 1], 'A2': [1, 2], 'A3': [1, 3], 'A4': [1, 4], 'A5': [1, 5], 'A6': [1, 6], 'A7': [1, 7], 'A8': [1, 8],
+        'A9': [1, 9], 'A10': [1, 10],
+        'B1': [2,1], 'B2': [2, 2], 'B3': [2,3], 'B4': [2,4], 'B5': [2,5], 'B6': [2,6], 'B7': [2,7], 'B8': [2, 8],
+        'B9': [2, 9], 'B10': [2, 10],
+        'C1': [3,1], 'C2': [3,2], 'C3': [3,3], 'C4': [3, 4], 'C5': [3,5], 'C6': [3,6], 'C7': [3,7], 'C8': [3, 8],
+        'C9': [3, 9], 'C10': [3, 10],
+        'D1': [4,1], 'D2': [4,2], 'D3': [4,3], 'D4': [4,4], 'D5': [4,5], 'D6': [4,6], 'D7': [4,7], 'D8': [4, 8],
+        'D9': [4, 9], 'D10': [4, 10],
+        'E1': [5,1], 'E2': [5,2], 'E3': [5,3], 'E4': [5,4], 'E5': [5,5], 'E6': [5,6], 'E7': [5,7], 'E8': [5, 8],
+        'E9': [5, 9], 'E10': [5, 10],
+        'F1': [6,1], 'F2': [6,2], 'F3': [6,3], 'F4': [6,4], 'F5': [6,5], 'F6': [6,6], 'F7': [6,7], 'F8': [6, 8],
+        'F9': [6, 9], 'F10': [6, 10],
+        'G1': [7,1], 'G2': [7,2], 'G3': [7,3], 'G4': [7,4], 'G5': [7,5], 'G6': [7,6], 'G7': [7,7], 'G8': [7, 8],
+        'G9': [7, 9], 'G10': [7, 10],
+        'H1': [8,1], 'H2': [8,2], 'H3': [8,3], 'H4': [8,4], 'H5': [8,5], 'H6': [8,6], 'H7': [8,7], 'H8': [8, 8],
+        'H9': [8, 9], 'H10': [8, 10],
+        'I1': [9,1], 'I2': [9,2], 'I3': [9,3], 'I4': [9,4], 'I5': [9,5], 'I6': [9,6], 'I7': [9,7], 'I8': [9, 8],
+        'I9': [9, 9], 'I10': [9, 10],
+        'J1': [10,1], 'J2': [10,2], 'J3': [10,3], 'J4': [10,4], 'J5': [10,5], 'J6': [10,6], 'J7': [10,7], 'J8': [10, 8],
+        'J9': [10, 9], 'J10': [10, 10],}
+
+dic3={'A1': '.', 'A2': '.', 'A3': '.', 'A4': '.', 'A5': '.', 'A6': '.', 'A7': '.', 'A8': '.', 'A9': '.', 'A10': '.',
+       'B1': '.', 'B2': '.', 'B3': '.', 'B4': '.', 'B5': '.', 'B6': '.', 'B7': '.', 'B8': '.', 'B9': '.', 'B10': '.',
+       'C1': '.', 'C2': '.', 'C3': '.', 'C4': '.', 'C5': '.', 'C6': '.', 'C7': '.', 'C8': '.', 'C9': '.', 'C10': '.',
+       'D1': '.', 'D2': '.', 'D3': '.', 'D4': '.', 'D5': '.', 'D6': '.', 'D7': '.', 'D8': '.', 'D9': '.', 'D10': '.',
+       'E1': '.', 'E2': '.', 'E3': '.', 'E4': '.', 'E5': '.', 'E6': '.', 'E7': '.', 'E8': '.', 'E9': '.', 'E10': '.',
+       'F1': '.', 'F2': '.', 'F3': '.', 'F4': '.', 'F5': '.', 'F6': '.', 'F7': '.', 'F8': '.', 'F9': '.', 'F10': '.',
+       'G1': '.', 'G2': '.', 'G3': '.', 'G4': '.', 'G5': '.', 'G6': '.', 'G7': '.', 'G8': '.', 'G9': '.', 'G10': '.',
+       'H1': '.', 'H2': '.', 'H3': '.', 'H4': '.', 'H5': '.', 'H6': '.', 'H7': '.', 'H8': '.', 'H9': '.', 'H10': '.',
+       'I1': '.', 'I2': '.', 'I3': '.', 'I4': '.', 'I5': '.', 'I6': '.', 'I7': '.', 'I8': '.', 'I9': '.', 'I10': '.',
+       'J1': '.', 'J2': '.', 'J3': '.', 'J4': '.', 'J5': '.', 'J6': '.', 'J7': '.', 'J8': '.', 'J9': '.', 'J10': '.',}
+
+def pl_drawboard():
+    print(f'''
+A) {dic['A1']} {dic['A2']} {dic['A3']} {dic['A4']} {dic['A5']} {dic['A6']} {dic['A7']} {dic['A8']} {dic['A9']} {dic['A10']}
+B) {dic['B1']} {dic['B2']} {dic['B3']} {dic['B4']} {dic['B5']} {dic['B6']} {dic['B7']} {dic['B8']} {dic['B9']} {dic['B10']} 
+C) {dic['C1']} {dic['C2']} {dic['C3']} {dic['C4']} {dic['C5']} {dic['C6']} {dic['C7']} {dic['C8']} {dic['C9']} {dic['C10']}
+D) {dic['D1']} {dic['D2']} {dic['D3']} {dic['D4']} {dic['D5']} {dic['D6']} {dic['D7']} {dic['D8']} {dic['D9']} {dic['D10']}
+E) {dic['E1']} {dic['E2']} {dic['E3']} {dic['E4']} {dic['E5']} {dic['E6']} {dic['E7']} {dic['E8']} {dic['E9']} {dic['E10']}
+F) {dic['F1']} {dic['F2']} {dic['F3']} {dic['F4']} {dic['F5']} {dic['F6']} {dic['F7']} {dic['F8']} {dic['F9']} {dic['F10']}
+G) {dic['G1']} {dic['G2']} {dic['G3']} {dic['G4']} {dic['G5']} {dic['G6']} {dic['G7']} {dic['G8']} {dic['G9']} {dic['G10']}
+H) {dic['H1']} {dic['H2']} {dic['H3']} {dic['H4']} {dic['H5']} {dic['H6']} {dic['H7']} {dic['H8']} {dic['H9']} {dic['H10']}
+I) {dic['I1']} {dic['I2']} {dic['I3']} {dic['I4']} {dic['I5']} {dic['I6']} {dic['I7']} {dic['I8']} {dic['I9']} {dic['I10']}
+J) {dic['J1']} {dic['J2']} {dic['J3']} {dic['J4']} {dic['J5']} {dic['J6']} {dic['J7']} {dic['J8']} {dic['J9']} {dic['J10']}
+''')
+
+def cm_drawboard():
+    print(f'''
+A) {dic3['A1']} {dic3['A2']} {dic3['A3']} {dic3['A4']} {dic3['A5']} {dic3['A6']} {dic3['A7']} {dic3['A8']} {dic3['A9']} {dic3['A10']}
+B) {dic3['B1']} {dic3['B2']} {dic3['B3']} {dic3['B4']} {dic3['B5']} {dic3['B6']} {dic3['B7']} {dic3['B8']} {dic3['B9']} {dic3['B10']} 
+C) {dic3['C1']} {dic3['C2']} {dic3['C3']} {dic3['C4']} {dic3['C5']} {dic3['C6']} {dic3['C7']} {dic3['C8']} {dic3['C9']} {dic3['C10']}
+D) {dic3['D1']} {dic3['D2']} {dic3['D3']} {dic3['D4']} {dic3['D5']} {dic3['D6']} {dic3['D7']} {dic3['D8']} {dic3['D9']} {dic3['D10']}
+E) {dic3['E1']} {dic3['E2']} {dic3['E3']} {dic3['E4']} {dic3['E5']} {dic3['E6']} {dic3['E7']} {dic3['E8']} {dic3['E9']} {dic3['E10']}
+F) {dic3['F1']} {dic3['F2']} {dic3['F3']} {dic3['F4']} {dic3['F5']} {dic3['F6']} {dic3['F7']} {dic3['F8']} {dic3['F9']} {dic3['F10']}
+G) {dic3['G1']} {dic3['G2']} {dic3['G3']} {dic3['G4']} {dic3['G5']} {dic3['G6']} {dic3['G7']} {dic3['G8']} {dic3['G9']} {dic3['G10']}
+H) {dic3['H1']} {dic3['H2']} {dic3['H3']} {dic3['H4']} {dic3['H5']} {dic3['H6']} {dic3['H7']} {dic3['H8']} {dic3['H9']} {dic3['H10']}
+I) {dic3['I1']} {dic3['I2']} {dic3['I3']} {dic3['I4']} {dic3['I5']} {dic3['I6']} {dic3['I7']} {dic3['I8']} {dic3['I9']} {dic3['I10']}
+J) {dic3['J1']} {dic3['J2']} {dic3['J3']} {dic3['J4']} {dic3['J5']} {dic3['J6']} {dic3['J7']} {dic3['J8']} {dic3['J9']} {dic3['J10']}
+    ''')
+
+
+def get_key(val,dict):
+       for key,value in dict.items():
+              if val==value:
+                     return key
+
+
+def place_ships(n,av):
+    og_num_ship_po=n
+    q=av.copy()
+    while n!=0:
+        n=og_num_ship_po
+        l=[]
+        po=random.choice(av)
+        av.remove(po)
+        n-=1
+        l.append(po)
+        r=random.choice(['a','b','c','d'])
+        if r=='a' or r=='b':
+            a=1
+            b=1
+            while ([po[0], po[1] - a] in av or [po[0], po[1] + b] in av) and n != 0:
+                t=random.choice(['a','b'])
+                if t=='a':
+                    g=[po[0],po[1]-a]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n-=1
+                        a+=1
+                else:
+                    g = [po[0], po[1]+b]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n-=1
+                        b += 1
+            if n!=0:
+                l=[po]
+                av=q.copy()
+                n=(og_num_ship_po)-1
+            c = 1
+            d = 1
+            while ([po[0] - c, po[1]] in av or [po[0] + d, po[1]] in av) and n != 0:
+                t = random.choice(['c', 'd'])
+                if t == 'c':
+                    g = [po[0] - c, po[1]]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n -= 1
+                        c += 1
+                else:
+                    g = [po[0] + d, po[1]]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n -= 1
+                        d += 1
+            if n!=0:
+                l=[po]
+                av=q.copy()
+                n=og_num_ship_po-1
+        else:
+            c=1
+            d=1
+            while ([po[0] - c, po[1]] in av or [po[0] + d, po[1] ] in av) and n != 0:
+                t=random.choice(['c','d'])
+                if t == 'c':
+                    g = [po[0] - c, po[1]]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n-=1
+                        c += 1
+                else:
+                    g = [po[0] + d, po[1] ]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n-=1
+                        d += 1
+            if n!=0:
+                l=[po]
+                av=q.copy()
+                n=og_num_ship_po-1
+
+            a = 1
+            b = 1
+            while ([po[0], po[1] - a] in av or [po[0], po[1] + b] in av) and n != 0:
+                t = random.choice(['a', 'b'])
+                if t == 'a':
+                    g = [po[0], po[1] - a]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n -= 1
+                        a += 1
+                else:
+                    g = [po[0], po[1] + b]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n -= 1
+                        b += 1
+            if n != 0:
+                av = q.copy()
+    return l
+
+
+s_l=['a','b','c','d']
+
+def first_cm_input():
+    global po
+    global a
+    global b
+    global c
+    global d
+    global s
+    a=b=c=d=1
+    po=random.choice(cm_av)
+    po_key=get_key(po,dic2)
+    cm_av.remove(po)
+    if po in cm_l:
+        cm_l.remove(po)
+        dic3[po_key]='o'
+    else:
+        dic3[po_key]='x'
+    s=random.choice(s_l)
+two_l=False
+
+def get_cm_input():
+    global po
+    global a
+    global b
+    global c
+    global d
+    global s
+    global one_l
+    global two_l
+    up=[po[0]-c,po[1]]
+    up_key=get_key(up,dic2)
+    down=[po[0]+d,po[1]]
+    down_key=get_key(down,dic2)
+    left=[po[0],po[1]-a]
+    left_key=get_key(left,dic2)
+    right=[po[0],po[1]+b]
+    right_key=get_key(right,dic2)
+    og=cm_av.copy()
+    po_key=get_key(po,dic2)
+    while cm_av==og:
+        if dic3[po_key]=='x':
+            one_l='n'
+            two_l=False
+            a = b = c = d = 1
+            po = random.choice(cm_av)
+            po_key = get_key(po, dic2)
+            up = [po[0] - c, po[1]]
+            up_key = get_key(up, dic2)
+            down = [po[0] + d, po[1]]
+            down_key = get_key(down, dic2)
+            left = [po[0], po[1] - a]
+            left_key = get_key(left, dic2)
+            right = [po[0], po[1] + b]
+            right_key = get_key(right, dic2)
+            cm_av.remove(po)
+            if po in cm_l:
+                dic3[po_key] = 'o'
+                cm_l.remove(po)
+                if up in all_av:
+                    if dic3[up_key] == 'o':
+                        c += 1
+                        two_l = True
+                if down in all_av:
+                    if dic3[down_key] == 'o':
+                        d += 1
+                        two_l = True
+                if left in all_av:
+                    if dic3[left_key] == 'o':
+                        a += 1
+                        two_l = True
+                if right in all_av:
+                    if dic3[right_key] == 'o':
+                        b += 1
+                        two_l = True
+            else:
+                dic3[po_key] = 'x'
+
+        elif two_l:
+            if up in cm_av or down in cm_av or left in cm_av or right in cm_av:
+                while cm_av==og:
+                    s=random.choice(['a','b','c','d'])
+                    if s=='a':
+                        if left in cm_av:
+                            cm_av.remove(left)
+                            if left in cm_l:
+                                cm_l.remove(left)
+                                dic3[left_key]='o'
+                                a+=1
+                                left = [po[0], po[1] - a]
+                                left_key = get_key(left, dic2)
+                                if left in all_av:
+                                    while dic3[left_key]=='o':
+                                        a+=1
+                                        left = [po[0], po[1] - a]
+                                        left_key = get_key(left, dic2)
+                                        if left not in all_av:
+                                            break
+                            else:
+                                dic3[left_key]='x'
+                    elif s=='b':
+                        if right in cm_av:
+                            cm_av.remove(right)
+                            if right in cm_l:
+                                cm_l.remove(right)
+                                dic3[right_key] = 'o'
+                                b += 1
+                                right = [po[0], po[1] + b]
+                                right_key = get_key(right, dic2)
+                                if right in all_av:
+                                    while dic3[right_key] == 'o':
+                                        b += 1
+                                        right = [po[0], po[1] + b]
+                                        right_key = get_key(right, dic2)
+                                        if left not in all_av:
+                                            break
+                            else:
+                                dic3[right_key] = 'x'
+                    elif s == 'c':
+                        if up in cm_av:
+                            cm_av.remove(up)
+                            if up in cm_l:
+                                cm_l.remove(up)
+                                dic3[up_key] = 'o'
+                                c += 1
+                                up = [po[0] - c, po[1]]
+                                up_key = get_key(up, dic2)
+                                if up in all_av:
+                                    while dic3[up_key] == 'o':
+                                        c += 1
+                                        up = [po[0] - c, po[1]]
+                                        up_key = get_key(up, dic2)
+                                        if up not in all_av:
+                                           break
+                            else:
+                                dic3[up_key] = 'x'
+                    elif s == 'd':
+                        if down in cm_av:
+                            cm_av.remove(down)
+                            if down in cm_l:
+                                cm_l.remove(down)
+                                dic3[down_key] = 'o'
+                                d += 1
+                                down = [po[0] + d, po[1]]
+                                down_key = get_key(down, dic2)
+                                if down in all_av:
+                                    while dic3[down_key] == 'o':
+                                        d += 1
+                                        down = [po[0] + d, po[1]]
+                                        down_key = get_key(down, dic2)
+                                        if down not in all_av:
+                                            break
+                            else:
+                                dic3[down_key] = 'x'
+            else:
+                one_l='n'
+                two_l=False
+                a = b = c = d = 1
+                po = random.choice(cm_av)
+                po_key = get_key(po, dic2)
+                up = [po[0] - c, po[1]]
+                up_key = get_key(up, dic2)
+                down = [po[0] + d, po[1]]
+                down_key = get_key(down, dic2)
+                left = [po[0], po[1] - a]
+                left_key = get_key(left, dic2)
+                right = [po[0], po[1] + b]
+                right_key = get_key(right, dic2)
+                cm_av.remove(po)
+                if po in cm_l:
+                    dic3[po_key] = 'o'
+                    cm_l.remove(po)
+                else:
+                    dic3[po_key] = 'x'
+                if up in all_av:
+                    if dic3[up_key] == 'o':
+                        c += 1
+                        two_l = True
+                if down in all_av:
+                    if dic3[down_key] == 'o':
+                        d += 1
+                        two_l = True
+                if left in all_av:
+                    if dic3[left_key] == 'o':
+                        a += 1
+                        two_l = True
+                if right in all_av:
+                    if dic3[right_key] == 'o':
+                        b += 1
+                        two_l = True
+
+        elif not two_l:
+            if a==1 and b==1 and c==1 and d==1:
+                if up in cm_av or down in cm_av or left in cm_av or right in cm_av:
+                    while cm_av==og:
+                        s=random.choice(['a','b','c','d'])
+                        if s == 'a':
+                            if left in cm_av:
+                                cm_av.remove(left)
+                                if left in cm_l:
+                                    cm_l.remove(left)
+                                    dic3[left_key] = 'o'
+                                    a += 1
+                                    left = [po[0], po[1] - a]
+                                    left_key = get_key(left, dic2)
+                                    if left in all_av:
+                                        while dic3[left_key] == 'o':
+                                            a += 1
+                                            left = [po[0], po[1] - a]
+                                            left_key = get_key(left, dic2)
+                                            if left not in all_av:
+                                                break
+                                    one_l='a'
+                                else:
+                                    dic3[left_key] = 'x'
+                        elif s == 'b':
+                            if right in cm_av:
+                                cm_av.remove(right)
+                                if right in cm_l:
+                                    cm_l.remove(right)
+                                    dic3[right_key] = 'o'
+                                    b += 1
+                                    right = [po[0], po[1] + b]
+                                    right_key = get_key(right, dic2)
+                                    if right in all_av:
+                                        while dic3[right_key] == 'o':
+                                            b += 1
+                                            right = [po[0], po[1] + b]
+                                            right_key = get_key(right, dic2)
+                                            if right not in all_av:
+                                                break
+                                    one_l='b'
+                                else:
+                                    dic3[right_key] = 'x'
+                        elif s == 'c':
+                            if up in cm_av:
+                                cm_av.remove(up)
+                                if up in cm_l:
+                                    cm_l.remove(up)
+                                    dic3[up_key] = 'o'
+                                    c += 1
+                                    up = [po[0] - c, po[1]]
+                                    up_key = get_key(up, dic2)
+                                    if up in all_av:
+                                        while dic3[up_key] == 'o':
+                                            c += 1
+                                            up = [po[0] - c, po[1]]
+                                            up_key = get_key(up, dic2)
+                                            if up not in all_av:
+                                                break
+                                    one_l='c'
+                                else:
+                                    dic3[up_key] = 'x'
+                        elif s == 'd':
+                            if down in cm_av:
+                                cm_av.remove(down)
+                                if down in cm_l:
+                                    cm_l.remove(down)
+                                    dic3[down_key] = 'o'
+                                    d += 1
+                                    down = [po[0] + d, po[1]]
+                                    down_key = get_key(down, dic2)
+                                    if down in all_av:
+                                        while dic3[down_key] == 'o':
+                                            d += 1
+                                            down = [po[0] + d, po[1]]
+                                            down_key = get_key(down, dic2)
+                                            if down not in all_av:
+                                                break
+                                    one_l='d'
+                                else:
+                                    dic3[down_key] = 'x'
+
+                else:
+                    one_l='n'
+                    two_l=False
+                    a = b = c = d = 1
+                    po = random.choice(cm_av)
+                    po_key = get_key(po, dic2)
+                    up = [po[0] - c, po[1]]
+                    up_key = get_key(up, dic2)
+                    down = [po[0] + d, po[1]]
+                    down_key = get_key(down, dic2)
+                    left = [po[0], po[1] - a]
+                    left_key = get_key(left, dic2)
+                    right = [po[0], po[1] + b]
+                    right_key = get_key(right, dic2)
+                    cm_av.remove(po)
+                    if po in cm_l:
+                        dic3[po_key] = 'o'
+                        cm_l.remove(po)
+                    else:
+                        dic3[po_key] = 'x'
+                    if up in all_av:
+                        if dic3[up_key] == 'o':
+                            c += 1
+                            two_l = True
+                    if down in all_av:
+                        if dic3[down_key] == 'o':
+                            d += 1
+                            two_l = True
+                    if left in all_av:
+                        if dic3[left_key] == 'o':
+                            a += 1
+                            two_l = True
+                    if right in all_av:
+                        if dic3[right_key] == 'o':
+                            b += 1
+                            two_l = True
+
+            elif a!=1 or b!=1 or c!=1 or d!=1:
+                if one_l=='a' or one_l=='b':
+
+                    if left in cm_av or right in cm_av:
+                        while cm_av==og:
+                            s=random.choice(['a','b'])
+                            if s == 'a':
+                                if left in cm_av:
+                                    cm_av.remove(left)
+                                    if left in cm_l:
+                                        cm_l.remove(left)
+                                        dic3[left_key] = 'o'
+                                        a += 1
+                                        left = [po[0], po[1] - a]
+                                        left_key = get_key(left, dic2)
+                                        if left in all_av:
+                                            while dic3[left_key] == 'o':
+                                                a += 1
+                                                left = [po[0], po[1] - a]
+                                                left_key = get_key(left, dic2)
+                                                if left not in all_av:
+                                                    break
+                                    else:
+                                        dic3[left_key] = 'x'
+                                        print('x')
+                            elif s == 'b':
+                                if right in cm_av:
+                                    cm_av.remove(right)
+                                    if right in cm_l:
+                                        cm_l.remove(right)
+                                        dic3[right_key] = 'o'
+                                        b += 1
+                                        right = [po[0], po[1] + b]
+                                        right_key = get_key(right, dic2)
+                                        if right in all_av:
+                                            while dic3[right_key] == 'o':
+                                                b += 1
+                                                right = [po[0], po[1] + b]
+                                                right_key = get_key(right, dic2)
+                                                if left not in all_av:
+                                                    break
+                                    else:
+                                        dic3[right_key] ='x'
+                    else:
+                        one_l = 'n'
+                        two_l = False
+                        a = b = c = d = 1
+                        po = random.choice(cm_av)
+                        po_key = get_key(po, dic2)
+                        up = [po[0] - c, po[1]]
+                        up_key = get_key(up, dic2)
+                        down = [po[0] + d, po[1]]
+                        down_key = get_key(down, dic2)
+                        left = [po[0], po[1] - a]
+                        left_key = get_key(left, dic2)
+                        right = [po[0], po[1] + b]
+                        right_key = get_key(right, dic2)
+                        cm_av.remove(po)
+                        if po in cm_l:
+                            dic3[po_key] = 'o'
+                            cm_l.remove(po)
+                        else:
+                            dic3[po_key] = 'x'
+                        if up in all_av:
+                            if dic3[up_key] == 'o':
+                                c += 1
+                                two_l = True
+                        if down in all_av:
+                            if dic3[down_key] == 'o':
+                                d += 1
+                                two_l = True
+                        if left in all_av:
+                            if dic3[left_key] == 'o':
+                                a += 1
+                                two_l = True
+                        if right in all_av:
+                            if dic3[right_key] == 'o':
+                                b += 1
+                                two_l = True
+                elif one_l=='c' or one_l=='d':
+                    if up in cm_av or down in cm_av:
+                        while cm_av==og:
+                            s=random.choice(['c','d'])
+                            if s == 'c':
+                                if up in cm_av:
+                                    cm_av.remove(up)
+                                    if up in cm_l:
+                                        cm_l.remove(up)
+                                        dic3[up_key] = 'o'
+                                        c += 1
+                                        up = [po[0] - c, po[1]]
+                                        up_key = get_key(up, dic2)
+                                        if up in all_av:
+                                            while dic3[up_key] == 'o':
+                                                c += 1
+                                                up = [po[0] - c, po[1]]
+                                                up_key = get_key(up, dic2)
+                                                if up not in all_av:
+                                                    break
+                                    else:
+                                        dic3[up_key] = 'x'
+                            if s == 'd':
+                                if down in cm_av:
+                                    cm_av.remove(down)
+                                    if down in cm_l:
+                                        cm_l.remove(down)
+                                        dic3[down_key] = 'o'
+                                        d += 1
+                                        down = [po[0] + d, po[1]]
+                                        down_key = get_key(down, dic2)
+                                        if down in all_av:
+                                            while dic3[down_key] == 'o':
+                                                d += 1
+                                                down = [po[0] + d, po[1]]
+                                                down_key = get_key(down, dic2)
+                                                if down not in all_av:
+                                                    break
+                                    else:
+                                        dic3[down_key] = 'x'
+
+                    else:
+                        one_l='n'
+                        two_l=False
+                        a = b = c = d = 1
+                        po = random.choice(cm_av)
+                        po_key = get_key(po, dic2)
+                        up = [po[0] - c, po[1]]
+                        up_key = get_key(up, dic2)
+                        down = [po[0] + d, po[1]]
+                        down_key = get_key(down, dic2)
+                        left = [po[0], po[1] - a]
+                        left_key = get_key(left, dic2)
+                        right = [po[0], po[1] + b]
+                        right_key = get_key(right, dic2)
+                        cm_av.remove(po)
+                        if po in cm_l:
+                            dic3[po_key] = 'o'
+                            cm_l.remove(po)
+                        else:
+                            dic3[po_key] = 'x'
+                        if up in all_av:
+                            if dic3[up_key] == 'o':
+                                c += 1
+                                two_l = True
+                        if down in all_av:
+                            if dic3[down_key] == 'o':
+                                d += 1
+                                two_l = True
+                        if left in all_av:
+                            if dic3[left_key] == 'o':
+                                a += 1
+                                two_l = True
+                        if right in all_av:
+                            if dic3[right_key] == 'o':
+                                b += 1
+                                two_l = True
+
+
+def get_input():
+    o=''
+    while o not in dic.keys() or o in alr:
+        o=input('Enter the point you want to shoot at : ').upper()
+    alr.append(o)
+    print(dic2[o])
+    if dic2[o] in pl_l:
+        dic[o] = 'o'
+        pl_l.remove(dic2[o])
+    else:
+        dic[o] = 'x'
+
+
+def play_again():
+    ag=input('Do you want to play again? ').lower()
+    if ag.startswith('y'):
+        return True
+    else:
+        return False
+
+
+def get_ships(l):
+    l.extend(place_ships(2, av))
+    l.extend(place_ships(3, av))
+    l.extend(place_ships(3, av))
+    l.extend(place_ships(4, av))
+    l.extend(place_ships(5, av))
+
+def get_k_nd_l(k,l):
+    k.append(place_ships(2, av))
+    k.append(place_ships(3, av))
+    k.append(place_ships(3, av))
+    k.append(place_ships(4, av))
+    k.append(place_ships(5, av))
+    for i in k:
+        for j in i:
+            l.append(j)
+
+
+def draw_finalboard(dic,k):
+    for i in dic:
+        dic[i]='.'
+
+    for i in dic2:
+        for j in k:
+            if dic2[i] in j:
+                if k.index(j) == 0:
+                    dic[i] = '2'
+                if k.index(j) == 1:
+                    dic[i] = '3'
+                if k.index(j) == 2:
+                    dic[i] = '3'
+                if k.index(j) == 3:
+                    dic[i] = '4'
+                if k.index(j) == 4:
+                    dic[i] = '5'
+            #else:
+                #if dic[i] != '1' and dic[i] != '2' and dic[i] != '3' and dic[i] != '4':
+                    #dic[i] = '.'
+
+
+def who_goes_first():
+    w=random.randint(0,1)
+    if w==0:
+        if pl_tries!=0:
+            print('\nThe computer will go first.\n')
+            return 'cm'
+    else:
+        if pl_tries!=0:
+            print('\nYou will go first.')
+        return 'pl'
+
+
+def more_tries():
+    an=input('\nDo you want more tries? ')
+    print('\n')
+    return an
+
+
+while True:
+
+    av = [[1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7], [1, 8], [1, 9], [1, 10],
+          [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6], [2, 7], [2, 8], [2, 9], [2, 10],
+          [3, 1], [3, 2], [3, 3], [3, 4], [3, 5], [3, 6], [3, 7], [3, 8], [3, 9], [3, 10],
+          [4, 1], [4, 2], [4, 3], [4, 4], [4, 5], [4, 6], [4, 7], [4, 8], [4, 9], [4, 10],
+          [5, 1], [5, 2], [5, 3], [5, 4], [5, 5], [5, 6], [5, 7], [5, 8], [5, 9], [5, 10],
+          [6, 1], [6, 2], [6, 3], [6, 4], [6, 5], [6, 6], [6, 7], [6, 8], [6, 9], [6, 10],
+          [7, 1], [7, 2], [7, 3], [7, 4], [7, 5], [7, 6], [7, 7], [7, 8], [7, 9], [7, 10],
+          [8, 1], [8, 2], [8, 3], [8, 4], [8, 5], [8, 6], [8, 7], [8, 8], [8, 9], [8, 10],
+          [9, 1], [9, 2], [9, 3], [9, 4], [9, 5], [9, 6], [9, 7], [9, 8], [9, 9], [9, 10],
+          [10, 1], [10, 2], [10, 3], [10, 4], [10, 5], [10, 6], [10, 7], [10, 8], [10, 9], [10, 10]]
+
+    for i in dic:
+        dic[i]='.'
+
+    for i in dic3:
+        dic3[i]='.'
+
+    cm_av=av.copy()
+    cm_l = []
+    pl_l = []
+    k_cm=[]
+    k_pl=[]
+    get_k_nd_l(k_cm,cm_l)
+    get_k_nd_l(k_pl,pl_l)
+
+    pl_tries=cm_tries=''
+    while not pl_tries.isnumeric():
+        pl_tries=input('\nEnter the number of tries you want to get : ')
+
+    pl_tries=cm_tries=int(pl_tries)
+    pl_t=pl_l.copy()
+    cm_t=cm_l.copy()
+    alr=[]
+
+    if pl_tries == 0 and cm_tries == 0:
+        if more_tries().startswith('y'):
+            more = ''
+            while not more.isnumeric():
+                more = input('Enter the number of tries you want to get : ')
+            more = int(more)
+            pl_tries += more
+            cm_tries += more
+
+    if pl_tries!=0:
+        first_cm_input()
+
+    if who_goes_first()=='pl':
+
+        if pl_tries!=0:
+            pl_drawboard()
+
+        while pl_tries!=0 or cm_tries!=0:
+            get_input()
+            pl_tries-=1
+            print('\nYour board')
+            pl_drawboard()
+            print('Number of tries left :', str(pl_tries),'\n')
+
+            if pl_l==[]:
+                break
+
+            cm_tries-=1
+            print('Computer\'s board')
+            cm_drawboard()
+
+            if cm_l==[]:
+                break
+
+            print('Number of tries left :', str(cm_tries), '\n')
+
+            if pl_tries == 0 and pl_l != []:
+                an = input('Do you want more tries? ').lower()
+
+                if an.startswith('y'):
+                    more = ''
+
+                    while not more.isnumeric():
+                        more = input('\nEnter the number of tries you want to get : ')
+                    more = int(more)
+                    pl_tries += more
+                    cm_tries += more
+
+                print('\n')
+
+            if cm_tries != 0:
+                get_cm_input()
+
+    else:
+        while pl_tries!=0 or cm_tries!=0:
+            cm_tries-=1
+            print('Computer\'s board')
+            cm_drawboard()
+            print('Number of tries left :', str(cm_tries), '\n')
+
+            if cm_l==[]:
+                break
+
+            get_input()
+            print('\nYour board')
+            pl_drawboard()
+            pl_tries-=1
+            print('Number of tries left :', str(pl_tries), '\n')
+
+            if pl_tries == 0 and pl_l!=[]:
+                an = input('Do you want more tries? ').lower()
+
+                if an.startswith('y'):
+                    more = ''
+
+                    while not more.isnumeric():
+                        more = input('\nEnter the number of tries you want to get : ')
+
+                    more = int(more)
+                    pl_tries += more
+                    cm_tries += more
+                print('\n')
+
+            if pl_l==[]:
+                break
+
+            if cm_tries != 0:
+                get_cm_input()
+
+    draw_finalboard(dic,k_pl)
+    draw_finalboard(dic3,k_cm)
+    print('Position of your ships :')
+    pl_drawboard()
+    print('Position of the computer\'s ships :')
+    cm_drawboard()
+
+    if pl_l==[]:
+        print('You have won.\n')
+        print('Targets hit by you : ' + str(len(pl_t) - len(pl_l)) + '\n')
+        print('Targets hit by the computer : ' + str(len(cm_t) - len(cm_l)) + '\n')
+
+    elif cm_l==[]:
+        print('The computer has won.\n')
+        print('Targets hit by you : ' + str(len(pl_t) - len(pl_l)) + '\n')
+        print('Targets hit by the computer : ' + str(len(cm_t) - len(cm_l)) + '\n')
+
+    elif pl_tries==0:
+
+        if len(cm_l)<len(pl_l):
+            print('The computer has won.\n')
+            print('Targets hit by you : ' + str(len(pl_t) - len(pl_l)) + '\n')
+            print('Targets hit by the computer : ' + str(len(cm_t) - len(cm_l)) + '\n')
+
+        elif len(cm_l)==len(pl_l):
+            print('It\'s a draw.\n')
+            print('Targets hit by you : ' + str(len(pl_t) - len(pl_l)) + '\n')
+            print('Targets hit by the computer : ' + str(len(cm_t) - len(cm_l)) + '\n')
+
+        elif len(cm_l)>len(pl_l):
+            print('You have won.\n')
+            print('Targets hit by you : '+str(len(pl_t)-len(pl_l))+'\n')
+            print('Targets hit by the computer : '+str(len(cm_t)-len(cm_l))+'\n')
+
+    if not play_again():
+        break
+#l1=[]
+#l2=l1 (if one is modified, the other will also be modified) != l2=l1.copy()
+# condition1 or condition2 and condition3 != (condition1 or condition2) and condition3
+#[po[0],po[1]-(a+1) in cm_av and equal to 'o':
+#a+=1
+# when [po[0],po[1]-(a+1) and [po[0],po[1]-(a+2)=='o'?
+#two point ship, another line going through one of the points
+# if there are more than the given number of ships of the same no of points, check for another ship going through them
