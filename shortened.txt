@@ -1,0 +1,295 @@
+import random
+import numpy as np
+
+all_av = []
+for i in range(10):
+    for j in range(10):
+        all_av.append([i, j])
+
+dic = np.array([['.']*10]*10)
+conv={'a':0, 'b':1, 'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7, 'i':8, 'j':9, 'k':10}
+
+
+
+def pl_drawboard():
+    print(f'''
+A) {' '.join(dic[0])}
+B) {' '.join(dic[1])} 
+C) {' '.join(dic[2])}
+D) {' '.join(dic[3])}
+E) {' '.join(dic[4])}
+F) {' '.join(dic[5])}
+G) {' '.join(dic[6])}
+H) {' '.join(dic[7])}
+I) {' '.join(dic[8])}
+J) {' '.join(dic[9])}
+''')
+
+def get_key(val,dict):
+       for key,value in dict.items():
+              if val==value:
+                     return key
+
+def place_ships(n,av):
+    l=[]
+    og_num_ship_po=n
+    q=av.copy()
+    while n!=0:
+        n=og_num_ship_po
+        l=[]
+        po=random.choice(av)
+        av.remove(po)
+        n-=1
+        l.append(po)
+        r=random.choice(['a','b','c','d'])
+        if r=='a' or r=='b':
+            a=1
+            b=1
+            while ([po[0], po[1] - a] in av or [po[0], po[1] + b] in av) and n != 0:
+                t=random.choice(['a','b'])
+                if t=='a':
+                    g=[po[0],po[1]-a]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n-=1
+                        a+=1
+                else:
+                    g = [po[0], po[1]+b]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n-=1
+                        b += 1
+            if n!=0:
+                l=[po]
+                av=q.copy()
+                n=(og_num_ship_po)-1
+            c = 1
+            d = 1
+            while ([po[0] - c, po[1]] in av or [po[0] + d, po[1]] in av) and n != 0:
+                t = random.choice(['c', 'd'])
+                if t == 'c':
+                    g = [po[0] - c, po[1]]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n -= 1
+                        c += 1
+                else:
+                    g = [po[0] + d, po[1]]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n -= 1
+                        d += 1
+            if n!=0:
+                l=[po]
+                av=q.copy()
+                n=og_num_ship_po-1
+        else:
+            c=1
+            d=1
+            while ([po[0] - c, po[1]] in av or [po[0] + d, po[1] ] in av) and n != 0:
+                t=random.choice(['c','d'])
+                if t == 'c':
+                    g = [po[0] - c, po[1]]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n-=1
+                        c += 1
+                else:
+                    g = [po[0] + d, po[1] ]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n-=1
+                        d += 1
+            if n!=0:
+                l=[po]
+                av=q.copy()
+                n=og_num_ship_po-1
+
+            a = 1
+            b = 1
+            while ([po[0], po[1] - a] in av or [po[0], po[1] + b] in av) and n != 0:
+                t = random.choice(['a', 'b'])
+                if t == 'a':
+                    g = [po[0], po[1] - a]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n -= 1
+                        a += 1
+                else:
+                    g = [po[0], po[1] + b]
+                    if g in av:
+                        l.append(g)
+                        av.remove(g)
+                        n -= 1
+                        b += 1
+            if n != 0:
+                av = q.copy()
+    av=q.copy()
+    return l
+
+num=[1,2,3,4,5,6,7,8,9,10]
+alph=['a','b','c','d','e','f','g','h','i','j']
+
+
+def get_input():
+    o='00'
+    o=o.split()
+    while not len(o)==2 or o[0] not in alph or int(o[1]) not in num or o in alr:
+        o=input('Enter the point you want to shoot at : ').lower().split()
+        print(o[0], alr)
+    r=conv[o[0]]
+    c=int(o[1])-1
+    alr.append(o)
+    print([r,c])
+    if [r,c] in pl_l:
+        dic[r][c] = 'o'
+        pl_l.remove([r,c])
+    else:
+        dic[r][c] = 'x'
+
+def play_again():
+    ag=input('Do you want to play again? ').lower()
+    if ag.startswith('y'):
+        return True
+    else:
+        return False
+
+def get_ships(l):
+    l.extend(place_ships(2, av))
+    l.extend(place_ships(3, av))
+    l.extend(place_ships(3, av))
+    l.extend(place_ships(4, av))
+    l.extend(place_ships(5, av))
+
+def get_k_nd_l(k,l):
+    k.append(place_ships(2, av))
+    k.append(place_ships(3, av))
+    k.append(place_ships(3, av))
+    k.append(place_ships(4, av))
+    k.append(place_ships(5, av))
+    for i in k:
+        for j in i:
+            l.append(j)
+
+
+def draw_finalboard(dic,k):
+    for i in range(10):
+        for j in range(10):
+            dic[i][j]='.'
+    for i in all_av:
+        for j in k:
+            if i in j:
+                if k.index(j) == 0:
+                    dic[i[0]][i[1]] = '2'
+                if k.index(j) == 1:
+                    dic[i[0]][i[1]] = '3'
+                if k.index(j) == 2:
+                    dic[i[0]][i[1]] = '3'
+                if k.index(j) == 3:
+                    dic[i[0]][i[1]] = '4'
+                if k.index(j) == 4:
+                    dic[i[0]][i[1]] = '5'
+            #else:
+                #if dic[i] != '1' and dic[i] != '2' and dic[i] != '3' and dic[i] != '4':
+                    #dic[i] = '.'
+def who_goes_first():
+    w=random.randint(0,1)
+    if w==0:
+        if pl_tries!=0:
+            print('\nThe computer will go first.\n')
+            return 'cm'
+    else:
+        if pl_tries!=0:
+            print('\nYou will go first.')
+        return 'pl'
+def more_tries():
+    an=input('\nDo you want more tries? ')
+    print('\n')
+    return an
+
+
+
+while True:
+    av = []
+    for i in range(10):
+        for j in range(10):
+            av.append([i, j])
+
+    for i in range(10):
+        for j in range(10):
+            dic[i][j]='.'
+
+
+    pl_l = []
+    k_pl=[]
+    get_k_nd_l(k_pl,pl_l)
+    pl_tries=''
+
+    while not pl_tries.isnumeric():
+        pl_tries=input('\nEnter the number of tries you want to get : ')
+
+    pl_tries=int(pl_tries)
+    pl_t=pl_l.copy()
+    alr=[]
+
+    if pl_tries == 0:
+        if more_tries().startswith('y'):
+            more = ''
+            while not more.isnumeric():
+                more = input('Enter the number of tries you want to get : ')
+            more = int(more)
+            pl_tries += more
+
+    if pl_tries!=0:
+        pl_drawboard()
+        while pl_tries != 0:
+            get_input()
+            pl_tries -= 1
+            print('\nYour board')
+            pl_drawboard()
+            print('Number of tries left :', str(pl_tries), '\n')
+            if pl_l == []:
+                break
+
+            if pl_tries == 0 and pl_l != []:
+                an = input('Do you want more tries? ').lower()
+                if an.startswith('y'):
+                    more = ''
+                    while not more.isnumeric():
+                        more = input('\nEnter the number of tries you want to get : ')
+                    more = int(more)
+                    pl_tries += more
+                    if more!=0:
+                        print('\nYour board')
+                        pl_drawboard()
+                print('\n')
+
+
+    draw_finalboard(dic,k_pl)
+    print('Position of your ships :')
+    pl_drawboard()
+
+    if pl_l==[]:
+        print('You found all the ships!\n')
+
+    elif pl_tries==0:
+            print('You have lost.\n')
+            print('Targets hit by you : ' + str(len(pl_t) - len(pl_l)) + '\n')
+
+    if not play_again():
+        break
+#l1=[]
+#l2=l1 (if one is modified, the other will also be modified) != l2=l1.copy()
+# condition1 or condition2 and condition3 != (condition1 or condition2) and condition3
+#[po[0],po[1]-(a+1) in cm_av and equal to 'o':
+#a+=1
+# when [po[0],po[1]-(a+1) and [po[0],po[1]-(a+2)=='o'?
+#two point ship, another line going through one of the points
+# if there are more than the given number of ships of the same no of points, check for another ship going through them
