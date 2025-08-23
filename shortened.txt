@@ -285,11 +285,4 @@ while True:
 
     if not play_again():
         break
-#l1=[]
-#l2=l1 (if one is modified, the other will also be modified) != l2=l1.copy()
-# condition1 or condition2 and condition3 != (condition1 or condition2) and condition3
-#[po[0],po[1]-(a+1) in cm_av and equal to 'o':
-#a+=1
-# when [po[0],po[1]-(a+1) and [po[0],po[1]-(a+2)=='o'?
-#two point ship, another line going through one of the points
-# if there are more than the given number of ships of the same no of points, check for another ship going through them
+
