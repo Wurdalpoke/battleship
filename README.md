@@ -59,7 +59,7 @@ A console-based implementation of the classic **Battleship** game where you comp
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/Wurdalpoke/battleship/blob/main/code.txt
+   git clone https://github.com/Wurdalpoke/battleship
    ```
 
 2. Navigate to the project folder:
