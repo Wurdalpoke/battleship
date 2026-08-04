@@ -18,7 +18,7 @@ A console-based implementation of the classic **Battleship** game where you comp
 ![Extra Tries](extra_tries.png)
 
 ### Final Result
-![Final Result](images/final_result.png)
+![Final Result](final_result.png)
 
 ## Features
 
