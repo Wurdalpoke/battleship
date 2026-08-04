@@ -5,16 +5,21 @@ A console-based implementation of the classic **Battleship** game where you comp
 ## Screenshots
 
 ### Game Start
-![Game Start](images/game_start.png)
+![Game Start](game_start.png)
 
 ### Gameplay
-![Gameplay](images/gameplay.png)
+![Gameplay](gameplay_1.png)
+
+![Gameplay](gameplay_2.png)
+
+![Gameplay](gameplay_3.png)
 
 ### Extra Tries
-![Extra Tries](images/extra_tries.png)
+![Extra Tries](extra_tries.png)
 
 ### Final Result
 ![Final Result](images/final_result.png)
+
 ## Features
 
 - Random placement of **5 ships** for both the player and the computer.
