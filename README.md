@@ -41,13 +41,13 @@ A console-based implementation of the classic **Battleship** game where you comp
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/Wurdalpoke/battleship/blob/main/code.txt
    ```
 
 2. Navigate to the project folder:
 
    ```bash
-   cd your-repository
+   cd battleship
    ```
 
 3. Run the program:
@@ -56,7 +56,6 @@ A console-based implementation of the classic **Battleship** game where you comp
    python main.py
    ```
 
-   *(Replace `main.py` with your actual filename if it is different.)*
 
 ## Future Improvements
 
@@ -68,4 +67,4 @@ A console-based implementation of the classic **Battleship** game where you comp
 
 ## Author
 
-**Your Name**
+Harshita Samriddhi
