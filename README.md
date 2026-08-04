@@ -2,6 +2,19 @@
 
 A console-based implementation of the classic **Battleship** game where you compete against a computer opponent. The game features intelligent computer targeting, customizable game length, and replay functionality.
 
+## Screenshots
+
+### Game Start
+![Game Start](images/game_start.png)
+
+### Gameplay
+![Gameplay](images/gameplay.png)
+
+### Extra Tries
+![Extra Tries](images/extra_tries.png)
+
+### Final Result
+![Final Result](images/final_result.png)
 ## Features
 
 - Random placement of **5 ships** for both the player and the computer.
