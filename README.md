@@ -5,20 +5,20 @@ A console-based implementation of the classic **Battleship** game where you comp
 ## Screenshots
 
 ### Game Start
-![Game Start](game_start.png)
+![Game Start](images/game_start.png)
 
 ### Gameplay
-![Gameplay](gameplay_1.png)
+![Gameplay](images/gameplay_1.png)
 
-![Gameplay](gameplay_2.png)
+![Gameplay](images/gameplay_2.png)
 
-![Gameplay](gameplay_3.png)
+![Gameplay](images/gameplay_3.png)
 
 ### Extra Tries
-![Extra Tries](extra_tries.png)
+![Extra Tries](images/extra_tries.png)
 
 ### Final Result
-![Final Result](final_result.png)
+![Final Result](images/final_result.png)
 
 ## Features
 
